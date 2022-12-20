@@ -21,9 +21,12 @@ public class AutoTest {
     }
 
     @Test
-    void addToCartTest(){
+    void addToCartTest() throws InterruptedException {
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
         new LoginPage(driver).login("spartalex93@test.test", "123456");
+        new MyAccountPage(driver).navigationBlock.clickTshortsButtonInWomenSuggest();
+        new TshirtsPage(driver).selectSise("M");
+        Thread.sleep(5000);
     }
     @AfterEach
     void teardown(){
