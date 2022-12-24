@@ -14,4 +14,16 @@ public class TshirtsPage extends MasterPage {
         sisesList.stream().filter(s->s.getText().contains(sise)).findFirst().get().click();
 
     }
+    @FindBy(xpath = "//ul[@class='product_list grid row']/li")
+    private List<WebElement> tShirtsList;
+    @FindBy(xpath ="//a[@title='Add to cart']" )
+    private WebElement addToCartButton;
+    public  void  addTshirtToCart(String productName){
+       actions.moveToElement(tShirtsList.stream().filter(t->t.getText().contains(productName)).findFirst().get())
+               .build().perform();
+       addToCartButton.click();
+
+
+
+    }
 }
